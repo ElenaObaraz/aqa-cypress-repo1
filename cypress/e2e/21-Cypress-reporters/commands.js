@@ -5,3 +5,17 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('.modal-footer > .btn-primary').click(); 
    
 });
+
+Cypress.Commands.add('createExpense', (carId, date, mileage, liters, totalCost) => {
+  return cy.request({
+    method: 'POST',
+    url: '/api/expenses',
+    body: {
+      carId: carId,
+      reportedAt: date,
+      mileage: mileage,
+      liters: liters,
+      totalCost: totalCost
+    }
+  });
+});
